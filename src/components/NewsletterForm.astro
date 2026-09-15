@@ -1,0 +1,26 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<form class:list={['flex w-full flex-col gap-3 sm:flex-row', compact ? 'max-w-2xl' : 'max-w-3xl']}>
+  <label class="sr-only" for="newsletter-email">Email address</label>
+  <input
+    id="newsletter-email"
+    name="email"
+    type="email"
+    placeholder="Your email address"
+    autocomplete="email"
+    required
+    class="min-h-14 flex-1 border-2 border-black bg-white px-5 text-base text-black placeholder:text-black/60 focus:border-[#FF0000] focus:outline-none"
+  />
+  <button
+    type="submit"
+    class="min-h-14 bg-[#FF0000] px-7 font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-black"
+  >
+    Join the list
+  </button>
+</form>
