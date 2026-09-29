@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
+
+const basePath = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 ---
 
 <Layout>
@@ -25,7 +27,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
       </div>
       <div class="flex flex-col items-start justify-between gap-8">
         <p class="max-w-lg text-xl leading-relaxed">Part strategist, part storyteller, part perpetual student. I care about clear thinking and work that earns attention by being genuinely useful.</p>
-        <a href="/about" class="border-b-2 border-[#FF0000] pb-2 font-bold uppercase tracking-[0.08em] text-white transition-colors hover:text-[#FF0000]">More about Huu <span aria-hidden="true">-&gt;</span></a>
+        <a href={`${basePath}about/`} class="border-b-2 border-[#FF0000] pb-2 font-bold uppercase tracking-[0.08em] text-white transition-colors hover:text-[#FF0000]">More about Huu <span aria-hidden="true">-&gt;</span></a>
       </div>
     </div>
   </section>
@@ -35,7 +37,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
       <div>
         <h2 class="text-left font-display text-6xl font-bold uppercase leading-[0.85] text-[#FF0000] sm:text-8xl">Things are<br />made.</h2>
       </div>
-      <a href="/projects" class="hidden border-b-2 border-black pb-2 text-sm font-bold uppercase tracking-[0.08em] transition-colors hover:border-[#FF0000] hover:text-[#FF0000] sm:block">See everything <span aria-hidden="true">-&gt;</span></a>
+      <a href={`${basePath}projects/`} class="hidden border-b-2 border-black pb-2 text-sm font-bold uppercase tracking-[0.08em] transition-colors hover:border-[#FF0000] hover:text-[#FF0000] sm:block">See everything <span aria-hidden="true">-&gt;</span></a>
     </div>
     <div class="grid gap-12 sm:grid-cols-2">
       <article class="border-t-2 border-black pt-5"><p class="font-display text-3xl font-bold uppercase">The Sunday Signal</p><p class="mt-3 max-w-sm text-lg leading-relaxed">A weekly note on paying attention in a distracted world.</p></article>

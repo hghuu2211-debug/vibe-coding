@@ -1,15 +1,18 @@
 ---
+const basePath = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
+  { href: basePath, label: 'Home' },
+  { href: `${basePath}about/`, label: 'About' },
+  { href: `${basePath}projects/`, label: 'Projects' },
 ];
-const currentPath = Astro.url.pathname;
+const normalizePath = (path: string) =>
+  path.replace(basePath.replace(/\/$/, ''), '').replace(/\/$/, '') || '/';
+const currentPath = normalizePath(Astro.url.pathname);
 ---
 
 <header class="border-b border-black bg-black text-white">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
-    <a href="/" class="font-display text-3xl font-bold uppercase leading-none tracking-tight text-white" aria-label="Hoang Ba Huu home">
+    <a href={basePath} class="font-display text-3xl font-bold uppercase leading-none tracking-tight text-white" aria-label="Hoang Ba Huu home">
       HBH
     </a>
     <nav aria-label="Main navigation">
@@ -20,7 +23,7 @@ const currentPath = Astro.url.pathname;
               href={link.href}
               class:list={[
                 'nav-magnetic relative inline-block transition-colors hover:text-[#FF0000]',
-                currentPath === link.href ? 'text-[#FF0000]' : 'text-white',
+                currentPath === normalizePath(link.href) ? 'text-[#FF0000]' : 'text-white',
               ]}
               aria-current={currentPath === link.href ? 'page' : undefined}
             >
